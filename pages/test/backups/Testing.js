@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client';
-import { UPSERT_NOTES } from '../../constants/graphql/test/mutations';
+import { UPSERT_NOTES } from '../../../constants/graphql/test/mutations';
 import { NoteList } from '../NoteList';
 import { Card, Input, Form, Button, Select, Col, Row } from "antd";
 const { TextArea } = Input;
