@@ -6,7 +6,7 @@ import { Input, Form, Select, Col, Row, Modal, notification, Divider, Table, But
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 
-export const PumpList = (props) => {
+export default PumpList = (props) => {
     const { loading: pumpListLoading, data: pumpList, refetch } = useQuery(GET_PUMP_LIST);
 
     useEffect(() => {

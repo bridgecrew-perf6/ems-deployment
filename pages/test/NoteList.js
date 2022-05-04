@@ -5,7 +5,7 @@ import { GET_NOTE_LIST } from '../../constants/graphql/test/queries';
 import { Card, Divider, Table } from "antd";
 import Icon from '@ant-design/icons';
 
-export const NoteList = (props) => {
+export default NoteList = (props) => {
     const { loading: noteListLoading, data: noteList, refetch } = useQuery(GET_NOTE_LIST);
 
     useEffect(() => {
