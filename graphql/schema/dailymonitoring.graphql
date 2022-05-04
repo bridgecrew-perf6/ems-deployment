@@ -1,0 +1,18 @@
+
+type Mutation {
+    upsertDailyMonitor(inspection_date: String, census_count: Int, important_notes: String, id: Int): DailyMonitoring 
+    deleteDailyMonitor(id: Int): DailyMonitoring
+}
+
+type Query {
+    dailyMonitoring: [DailyMonitoring]
+    dailyRecord(id: Int): [DailyMonitoring]
+    dailyDateCheck(inspection_date: String): [DailyMonitoring]
+}
+
+type DailyMonitoring {
+    id: Int
+    census_count: Int
+    important_notes: String
+    inspection_date: String
+}

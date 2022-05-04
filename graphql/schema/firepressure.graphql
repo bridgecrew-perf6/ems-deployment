@@ -1,0 +1,19 @@
+
+type Mutation {
+    upsertFirePressure(id: Int,floor_id: Int,pressure: Float,inspection_id: Int,deleted: Boolean): FirePressures
+    deleteFirePressure(id: Int): FirePressures
+}
+
+type Query {
+    firePressures(monitoring_id: Int): [FirePressures]
+}
+
+type FirePressures {
+    id: Int
+    floor_id: Int
+    pressure: Float
+    inspection_id: Int
+    deleted: Boolean
+    inspection: Inspection
+    floor: Floor
+}

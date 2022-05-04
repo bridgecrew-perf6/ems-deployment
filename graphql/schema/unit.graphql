@@ -1,0 +1,16 @@
+
+type Mutation {
+    upsertUnit(id: Int, name: String, description: String): Unit,
+    deleteunit(id: Int): Unit,
+}
+
+type Query {
+    unit: [Unit],
+}
+
+type Unit {
+    id: Int
+    name: String
+    description: String
+    deleted: Boolean
+}

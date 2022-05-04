@@ -1,0 +1,22 @@
+
+type Mutation {
+    upsertPolutionControl(id: Int, quantity: Float, unit_id: Int, inspection_id: Int, waste_id: Int): PolutionControl
+    deletePolutionControl(id: Int): PolutionControl
+}
+
+type Query {
+    polutionControl: [PolutionControl],
+    polutionInspection(monitoring_id: Int): [PolutionControl]
+}
+
+type PolutionControl {
+    id: Int
+    quantity: Float
+    unit_id: Int
+    inspection_id: Int
+    waste_id: Int
+    deleted: Boolean
+    inspection: Inspection
+    unit: Unit
+    waste: Waste
+}

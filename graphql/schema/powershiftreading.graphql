@@ -1,0 +1,30 @@
+
+
+type Mutation {
+    upsertPowerShift(id: Int,inspection_id: Int, mode: String,line_volt_1: Float,line_volt_2: Float,line_volt_3: Float,line_curr_1: Float,line_curr_2: Float,line_curr_3: Float,duration_start: String,duration_end: String,shift_order: Int,power_type: String,frequency: Float): PowerShiftReading
+    deletePowerShift(id:Int): PowerShiftReading
+}
+
+type Query {
+    powershiftReading(monitoring_id: Int): [PowerShiftReading]
+    powershiftDisplay:[PowerShiftReading]
+}
+
+type PowerShiftReading {
+    id: Int
+    inspection_id: Int
+    mode: String
+    line_volt_1: Float
+    line_volt_2: Float
+    line_volt_3: Float
+    line_curr_1: Float
+    line_curr_2: Float
+    line_curr_3: Float
+    duration_start: String
+    duration_end: String
+    shift_order: Int
+    power_type: String
+    deleted: Boolean
+    inspection: Inspection
+    frequency: Float
+}

@@ -1,0 +1,16 @@
+
+type Mutation {
+    upsertFloor(num: String, description: String, id: Int): Floor
+    deleteFloor(id: Int): Floor
+}
+
+type Query {
+    floor: [Floor],
+}
+
+type Floor {
+    id: Int
+    num: String
+    description: String
+    deleted: Boolean
+}

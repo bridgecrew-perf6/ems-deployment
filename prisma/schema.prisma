@@ -1,0 +1,188 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Note {
+  id        Int      @id @default(autoincrement())
+  title    String?
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id         Int          @id @default(autoincrement())
+  username   String
+  password   String
+  email      String
+  name       String
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+  inspection Inspection[]
+}
+
+model Generator {
+  id              Int               @id @default(autoincrement())
+  name            String?
+  description     String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  deleted         Boolean           @default(false)
+  GeneratorStatus GeneratorStatus[]
+}
+
+model Floor {
+  id            Int             @id @default(autoincrement())
+  num           String?
+  description   String?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @default(now())
+  deleted         Boolean           @default(false)
+  FirePressures FirePressures[]
+}
+
+model Pump {
+  id          Int         @id @default(autoincrement())
+  name        String?
+  description String?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @default(now())
+  deleted         Boolean           @default(false)
+  PumpCheck   PumpCheck[]
+}
+
+model Waste {
+  id              Int               @id @default(autoincrement())
+  name            String?
+  description     String?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @default(now())
+  deleted         Boolean           @default(false)
+  PolutionControl PolutionControl[]
+}
+
+model DailyMonitoring {
+  id              Int          @id @default(autoincrement())
+  census_count    Int?
+  important_notes String?
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @default(now())
+  inspection_date String       @unique
+  deleted         Boolean           @default(false)
+  inspection      Inspection[]
+}
+
+model Inspection {
+  id                  Int                 @id @default(autoincrement())
+  monitoring_id       Int
+  inspection_incharge Int?
+  time_inspected      String?
+  remarks             String?
+  classification      String?
+  createdAt           DateTime            @default(now())
+  updatedAt           DateTime            @default(now())
+  user                User?               @relation(fields: [inspection_incharge], references: [id])
+  daily_monitoring    DailyMonitoring     @relation(fields: [monitoring_id], references: [id])
+  deleted             Boolean           @default(false)
+  PolutionControl     PolutionControl[]
+  FirePressures       FirePressures[]
+  PowerShiftReading   PowerShiftReading[]
+  PumpReading         PumpReading[]
+  PumpCheck           PumpCheck[]
+  GeneratorStatus     GeneratorStatus[]
+}
+
+model PolutionControl {
+  id            Int        @id @default(autoincrement())
+  waste_id      Int
+  unit_id       Int
+  quantity      Float?
+  inspection_id Int
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @default(now())
+  deleted         Boolean           @default(false)
+  inspection    Inspection @relation(fields: [inspection_id], references: [id])
+  waste         Waste      @relation(fields: [waste_id], references: [id])
+  unit          Unit       @relation(fields: [unit_id], references: [id])
+}
+
+model Unit {
+  id              Int               @id @default(autoincrement())
+  name            String?
+  description     String?
+  deleted         Boolean           @default(false)
+  polutionControl PolutionControl[]
+}
+
+model FirePressures {
+  id            Int        @id @default(autoincrement())
+  floor_id      Int
+  pressure      Float?
+  inspection_id Int
+  deleted         Boolean           @default(false)
+  floor         Floor      @relation(fields: [floor_id], references: [id])
+  inspection    Inspection @relation(fields: [inspection_id], references: [id])
+}
+
+model PowerShiftReading {
+  id             Int        @id @default(autoincrement())
+  inspection_id  Int
+  mode           String?
+  line_volt_1    Float?
+  line_volt_2    Float?
+  line_volt_3    Float?
+  line_curr_1    Float?
+  line_curr_2    Float?
+  line_curr_3    Float?
+  duration_start String?
+  duration_end   String?
+  shift_order    Int?
+  power_type     String?
+  frequency      Float?
+  deleted         Boolean           @default(false)
+  inspection     Inspection @relation(fields: [inspection_id], references: [id])
+}
+
+model PumpReading {
+  id                 Int        @id @default(autoincrement())
+  inspection_id      Int
+  pump_room_read     Float?
+  pump_station_read  Float?
+  stp_discharge_read Float?
+  stp_recycled_read  Float?
+  main_kwhr_read     Float?
+  stp_kwhr_read      Float?
+  deleted         Boolean           @default(false)
+  inspection         Inspection @relation(fields: [inspection_id], references: [id])
+}
+
+model PumpCheck {
+  id            Int        @id @default(autoincrement())
+  inspection_id Int
+  pump_id       Int
+  pump_mode     String?
+  pump_pressure Float?
+  deleted         Boolean           @default(false)
+  inspection    Inspection @relation(fields: [inspection_id], references: [id])
+  pump          Pump       @relation(fields: [pump_id], references: [id])
+}
+
+model GeneratorStatus {
+  id            Int        @id @default(autoincrement())
+  generator_id  Int
+  inspection_id Int
+  bat_voltage   Float?
+  engine_oil    String?
+  fuel_level    String?
+  coolant       String?
+  syncro_stat   String?
+  deleted         Boolean           @default(false)
+  generator     Generator  @relation(fields: [generator_id], references: [id])
+  inspection    Inspection @relation(fields: [inspection_id], references: [id])
+}
+

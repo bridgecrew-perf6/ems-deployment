@@ -1,0 +1,20 @@
+
+type Mutation {
+    upsertPumpCheck(id: Int,inspection_id: Int,pump_id: Int,pump_mode: String,pump_pressure: Float): PumpCheck
+    deletePumpCheck(id: Int): PumpCheck
+}
+
+type Query {
+    pumpCheckDisplay(monitoring_id: Int): [PumpCheck]
+}
+
+type PumpCheck {
+    id: Int 
+    inspection_id: Int
+    pump_id: Int
+    pump_mode: String
+    pump_pressure: Float
+    deleted: Boolean
+    inspection: Inspection
+    pump: Pump
+}

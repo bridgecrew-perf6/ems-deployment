@@ -1,0 +1,16 @@
+
+type Mutation {
+    upsertWaste(name: String, description: String, id: Int): Waste
+    deleteWaste(id: Int): Waste
+}
+
+type Query {
+    waste: [Waste],
+}
+
+type Waste {
+    id: Int
+    name: String
+    description: String
+    deleted: Boolean
+}

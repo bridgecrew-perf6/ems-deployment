@@ -1,0 +1,51 @@
+query PolutionControl {
+  polutionControl {
+    inspection_id
+  }
+}
+
+RESULT::
+
+{
+  "data": {
+    "polutionControl": [
+      {
+        "inspection_id": 1
+      },
+      {
+        "inspection_id": 1
+      }
+    ]
+  }
+}
+
+
+
+-------------------------------------------
+
+query Inspection($monitoringId: Int) {
+  inspection(monitoring_id: $monitoringId) {
+    id
+    monitoring_id
+  }
+}
+
+RESULT::
+
+{
+  "data": {
+    "inspection": [
+      {
+        "id": 1,
+        "monitoring_id": 1
+      }, 
+      {
+        "id": 5,
+        "monitoring_id": 1
+      }
+    ]
+  }
+}
+
+
+

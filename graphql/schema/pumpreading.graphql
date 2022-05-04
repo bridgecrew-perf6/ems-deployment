@@ -1,0 +1,22 @@
+
+type Mutation {
+    upsertPumpReading(id: Int,inspection_id: Int,pump_room_read: Float,pump_station_read: Float,stp_discharge_read: Float,stp_recycled_read: Float,main_kwhr_read: Float,stp_kwhr_read: Float): PumpReading
+    deletePumpReading(id: Int): PumpReading
+}
+
+type Query {
+    pumpReading(monitoring_id: Int): [PumpReading]
+}
+
+type PumpReading {
+    id: Int
+    inspection_id: Int
+    pump_room_read: Float
+    pump_station_read: Float
+    stp_discharge_read: Float
+    stp_recycled_read: Float
+    main_kwhr_read: Float
+    stp_kwhr_read: Float
+    deleted: Boolean
+    inspection: Inspection
+}

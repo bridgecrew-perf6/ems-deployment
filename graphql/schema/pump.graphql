@@ -1,0 +1,17 @@
+
+type Mutation {
+    upsertPump(name: String, description: String, id: Int): Pump
+    deletePump(id: Int): Pump
+
+}
+
+type Query {
+    pump: [Pump],
+}
+
+type Pump {
+    id: Int
+    name: String
+    description: String
+    deleted: Boolean
+}

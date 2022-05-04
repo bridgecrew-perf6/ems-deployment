@@ -1,0 +1,17 @@
+
+type Mutation {
+    # upsertGenerator: [Generator]!
+    upsertGenerator(name: String, description: String, id: Int): Generator
+    deleteGenerator(id: Int): Generator
+}
+
+type Query {
+    generators: [Generator],
+}
+
+type Generator {
+    id: Int
+    name: String
+    description: String
+    deleted: Boolean
+}

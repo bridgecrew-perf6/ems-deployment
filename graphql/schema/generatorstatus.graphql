@@ -1,0 +1,22 @@
+
+type Mutation {
+    upsertGeneratorStatus(id: Int,generator_id: Int,inspection_id: Int,bat_voltage: Float,syncro_stat: String, coolant: String, deleted: Boolean, fuel_level: String, engine_oil: String): GeneratorStatus
+    deleteGeneratorStatus(id: Int): GeneratorStatus
+}
+
+type Query {
+    generator_status(monitoring_id: Int): [GeneratorStatus]
+}
+
+type GeneratorStatus {
+    id: Int
+    generator: Generator
+    inspection_id: Int
+    inspection: Inspection
+    bat_voltage: Float
+    syncro_stat: String
+    coolant: String
+    deleted: Boolean
+    fuel_level: String
+    engine_oil: String
+}

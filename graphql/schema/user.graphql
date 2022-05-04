@@ -1,0 +1,41 @@
+
+
+type Mutation
+{
+    userRegistration(username: String!, password: String!): User!,
+    userLogin(username: String!, password: String!): UserLogin!,
+}
+
+# type Link {
+#     id: String
+#     title: String
+#     description: String
+#     url: String
+#     category: String
+#     imageUrl: String
+#     users: [String]
+# }
+
+# type Note {
+#     id: String
+#     title: String
+#     content: String
+# }
+
+type Query {
+    userEnum: [User]
+}
+
+type User {
+    id: String
+    username: String
+    password: String
+    email: String
+    name: String
+}
+
+type UserLogin {
+    token: String
+    user: User
+}
+

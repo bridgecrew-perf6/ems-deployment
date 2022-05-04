@@ -1,0 +1,25 @@
+
+
+type Mutation {
+    upsertInspection(id: Int, time_inspected: String, remarks: String, monitoring_id: Int, inspection_incharge: Int,classification: String,deleted: Boolean): Inspection
+    deleteInspection(id: Int): Inspection
+}
+
+type Query {
+    inspection_power(monitoring_id: Int): [Inspection]
+    inspection_pump(monitoring_id: Int): [Inspection]
+    inspection_fire(monitoring_id: Int): [Inspection]
+    inspection_waste(monitoring_id: Int): [Inspection]
+}
+
+type Inspection {
+    id: Int
+    time_inspected: String
+    remarks: String
+    daily_monitoring: DailyMonitoring
+    user: User
+    monitoring_id: Int
+    inspection_incharge: Int
+    deleted: Boolean
+    classification: String
+}
