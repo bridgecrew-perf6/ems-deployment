@@ -6,7 +6,7 @@ import { Input, Form, Select, Col, Row, Modal, notification, Divider, Table, But
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 
-export default WasteList = (props) => {
+const WasteList = (props) => {
     const { loading: wasteListLoading, data: wasteList, refetch } = useQuery(GET_WASTE_LIST);
 
     useEffect(() => {
@@ -100,3 +100,5 @@ export default WasteList = (props) => {
         </div>
     )
 }
+
+export default WasteList;

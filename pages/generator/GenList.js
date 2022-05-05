@@ -6,7 +6,7 @@ import { Input, Form, Select, Col, Row, Modal, notification, Divider, Table, But
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 
-export default GenList = (props) => {
+const GenList = (props) => {
     const { loading: genListLoading, data: genList, refetch } = useQuery(GET_GEN_LIST);
 
     useEffect(() => {
@@ -100,3 +100,5 @@ export default GenList = (props) => {
         </div>
     )
 }
+
+export default GenList;

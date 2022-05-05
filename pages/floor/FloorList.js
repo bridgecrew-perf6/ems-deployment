@@ -6,7 +6,7 @@ import { Input, Form, Select, Col, Row, Modal, notification, Divider, Table, But
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 
-export default FloorList = (props) => {
+const FloorList = (props) => {
     const { loading: floorListLoading, data: floorList, refetch } = useQuery(GET_FLOOR_LIST);
 
     useEffect(() => {
@@ -100,3 +100,5 @@ export default FloorList = (props) => {
         </div>
     )
 }
+
+export default FloorList;

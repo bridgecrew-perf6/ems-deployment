@@ -6,7 +6,7 @@ import { Input, Form, Select, Col, Row, Modal, notification, Divider, Table, But
 import { DeleteFilled, EditFilled } from '@ant-design/icons';
 import Icon from '@ant-design/icons';
 
-export default UnitList = (props) => {
+const UnitList = (props) => {
 
     const { loading: unitListLoading, data: unitList, refetch } = useQuery(UNIT_LIST);
 
@@ -83,3 +83,5 @@ export default UnitList = (props) => {
         </div>
     )
 }
+
+export default UnitList;

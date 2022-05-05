@@ -5,7 +5,7 @@ import { GET_NOTE_LIST } from '../../constants/graphql/test/queries';
 import { Card, Divider, Table } from "antd";
 import Icon from '@ant-design/icons';
 
-export default NoteList = (props) => {
+const NoteList = (props) => {
     const { loading: noteListLoading, data: noteList, refetch } = useQuery(GET_NOTE_LIST);
 
     useEffect(() => {
@@ -90,3 +90,5 @@ export default NoteList = (props) => {
         </div>
     )
 }
+
+export default NoteList;
