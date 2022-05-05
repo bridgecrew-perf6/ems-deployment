@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { UPSERT_GEN } from '../../constants/graphql/generator/mutations';
-import { GenList } from './GenList';
+import { GenList } from 'GenList';
 import { Card, Input, Form, Button, Select, Col, Row, Modal, notification } from "antd";
 import { SmileOutlined } from '@ant-design/icons';
 

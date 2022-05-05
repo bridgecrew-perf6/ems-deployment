@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { UPSERT_WASTE } from '../../constants/graphql/waste/mutations';
-import { WasteList } from './WasteList';
+import { WasteList } from 'WasteList';
 import { Card, Input, Form, Button, Select, Col, Row, Modal, notification } from "antd";
 import { SmileOutlined } from '@ant-design/icons';
 

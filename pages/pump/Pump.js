@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { UPSERT_PUMP } from '../../constants/graphql/pump/mutations';
-import { PumpList } from './PumpList';
+import { PumpList } from 'PumpList';
 import { Card, Input, Form, Button, Select, Col, Row, Modal, notification } from "antd";
 import { SmileOutlined } from '@ant-design/icons';
 
