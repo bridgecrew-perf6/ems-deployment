@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { gql, useMutation, useQuery } from '@apollo/client';
 import { UPSERT_FLOOR } from '../../constants/graphql/floor/mutations';
-import { FloorList } from '/vercel/path0/pages/floor/FloorList';
+import FloorList from './FloorList';
 import { Card, Input, Form, Button, Select, Col, Row, Modal, notification } from "antd";
 import { SmileOutlined } from '@ant-design/icons';
 
